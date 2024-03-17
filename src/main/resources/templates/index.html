@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Harry Potter Spells</title>
+</head>
+<body>
+<h1 class="text-center p-lg-3 p-md-4 py-3">Welcome To Harry Potter Spell Compendium</h1>
+<table id="spells" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nazwa</th>
+        <th>Inkantacja</th>
+        <th>Efekt</th>
+        <th>Typ Czaru</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="spell : ${spells}">
+        <td th:text="${spell.getName()}"></td>
+        <td th:text="${spell.getIncantation() != null} ? ${spell?.getIncantation()} : '...'"></td>
+        <td th:text="${spell.getEffect()}"></td>
+        <td th:text="${spell.getType()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
